@@ -1,0 +1,55 @@
+{
+  "name": "Курсовая Vesper",
+  "icon": "🥽",
+  "color": "#7c5cff",
+  "description": "Unity слева, VS Code справа, документация и таймер на 50 минут",
+  "steps": [
+    {
+      "type": "command",
+      "label": "Подтянуть свежую версию",
+      "command": "git pull",
+      "workingDir": "D:\\Projects\\Vesper"
+    },
+    {
+      "type": "app",
+      "path": "%ProgramFiles%\\Unity\\Hub\\Editor\\6000.0.30f1\\Editor\\Unity.exe",
+      "args": "-projectPath \"D:\\Projects\\Vesper\"",
+      "windowMatch": { "title": "Vesper" },
+      "windowTimeoutSec": 180,
+      "settleMs": 3000,
+      "layout": { "monitor": 0, "position": "left-half" }
+    },
+    {
+      "type": "app",
+      "path": "%LocalAppData%\\Programs\\Microsoft VS Code\\Code.exe",
+      "args": "\"D:\\Projects\\Vesper\\Assets\\Scripts\"",
+      "layout": { "monitor": 0, "position": "right-half" }
+    },
+    {
+      "type": "url",
+      "urls": [ "https://docs.unity3d.com/Manual/index.html", "https://ticktick.com/webapp" ],
+      "browser": "chrome",
+      "newWindow": true,
+      "layout": { "monitor": 1, "position": "maximized" }
+    },
+    {
+      "type": "timer",
+      "minutes": 50,
+      "message": "50 минут прошло — встань, разомнись, попей воды"
+    }
+  ],
+  "onEnd": [
+    {
+      "type": "python",
+      "label": "Бэкап проекта",
+      "script": "backup_project.py",
+      "input": { "source": "D:\\Projects\\Vesper", "keep": 10 },
+      "timeoutSec": 300
+    },
+    {
+      "type": "notify",
+      "title": "Vesper",
+      "message": "Не забудь закоммитить и запушить изменения"
+    }
+  ]
+}

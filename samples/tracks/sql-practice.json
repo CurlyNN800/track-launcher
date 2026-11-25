@@ -1,0 +1,36 @@
+{
+  "name": "SQL практика",
+  "icon": "🗄️",
+  "color": "#30c4ff",
+  "description": "Новая папка под практику, SSMS и документация по T-SQL",
+  "steps": [
+    {
+      "type": "python",
+      "label": "Папка под сегодняшнюю практику",
+      "script": "new_practice_folder.py",
+      "input": { "base": "D:\\Study\\SQL", "prefix": "Практика", "open": false }
+    },
+    {
+      "type": "app",
+      "path": "%ProgramFiles(x86)%\\Microsoft SQL Server Management Studio 20\\Common7\\IDE\\Ssms.exe",
+      "layout": { "monitor": 0, "position": "left-half" }
+    },
+    {
+      "type": "folder",
+      "path": "D:\\Study\\SQL",
+      "layout": { "monitor": 0, "position": "bottom-right" }
+    },
+    {
+      "type": "url",
+      "urls": [ "https://learn.microsoft.com/sql/t-sql/language-reference" ],
+      "browser": "edge",
+      "layout": { "monitor": 0, "position": "top-right" }
+    },
+    {
+      "type": "timer",
+      "minutes": 45,
+      "message": "Перерыв 10 минут"
+    }
+  ],
+  "onEnd": []
+}

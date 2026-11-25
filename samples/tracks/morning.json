@@ -1,0 +1,25 @@
+{
+  "name": "Утро",
+  "icon": "🌅",
+  "color": "#ffb020",
+  "description": "План на день и порядок в «Загрузках»",
+  "steps": [
+    {
+      "type": "url",
+      "urls": [ "https://ticktick.com/webapp", "https://calendar.google.com" ],
+      "browser": "chrome",
+      "layout": { "monitor": 0, "position": "center" }
+    },
+    {
+      "type": "python",
+      "label": "Разобрать «Загрузки»",
+      "script": "tidy_downloads.py",
+      "input": { "days": 14 }
+    },
+    {
+      "type": "notify",
+      "message": "Хорошего дня! Сначала самое важное дело из списка"
+    }
+  ],
+  "onEnd": []
+}
