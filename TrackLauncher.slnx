@@ -1,0 +1,6 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/TrackLauncher.Core/TrackLauncher.Core.csproj" />
+    <Project Path="src/TrackLauncher.App/TrackLauncher.App.csproj" />
+  </Folder>
+</Solution>
