@@ -1,0 +1,42 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net10.0-windows</TargetFramework>
+    <SupportedOSPlatformVersion>10.0.19041.0</SupportedOSPlatformVersion>
+    <UseWPF>true</UseWPF>
+    <!-- WinForms нужен только ради значка в трее (NotifyIcon). -->
+    <UseWindowsForms>true</UseWindowsForms>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>TrackLauncher.App</RootNamespace>
+    <AssemblyName>TrackLauncher</AssemblyName>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <ApplicationIcon>Assets\launcher.ico</ApplicationIcon>
+    <Version>1.0.0</Version>
+    <Product>Лаунчер треков</Product>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- Чтобы WinForms-типы не путались с WPF (Application, MessageBox, Color...). Пишем их полностью. -->
+    <Using Remove="System.Windows.Forms" />
+    <Using Remove="System.Drawing" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.*" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TrackLauncher.Core\TrackLauncher.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Assets\launcher.ico" />
+    <!-- Интерфейс (HTML/CSS/JS) лежит рядом с exe в папке ui -->
+    <None Update="ui\**\*" CopyToOutputDirectory="PreserveNewest" />
+    <!-- Примеры треков и скриптов копируются в %AppData% при первом запуске -->
+    <None Include="..\..\samples\**\*" Link="samples\%(RecursiveDir)%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
+</Project>
